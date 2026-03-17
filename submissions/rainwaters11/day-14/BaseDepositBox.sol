@@ -27,9 +27,10 @@ abstract contract BaseDepositBox is IDepositBox {
     }
 
     function storeSecret(string calldata secret) external virtual override onlyOwner {
-        _secret = secret;
-        _depositTime = block.timestamp;
-    }
+            require(bytes(secret).length == 66, "Store hashed secret only");
+            _secret = secret;
+            _depositTime = block.timestamp;
+        }
 
     function getSecret() public view virtual override onlyOwner returns (string memory) {
         return _secret;
