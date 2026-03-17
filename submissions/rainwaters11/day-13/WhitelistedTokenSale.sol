@@ -30,6 +30,7 @@ contract WhitelistedTokenSale is MistyCoin {
         owner = msg.sender;
         tokenPrice = _tokenPrice;
         saleEndTime = block.timestamp + _saleDurationSeconds;
+        _transfer(msg.sender, address(this), totalSupply);
     }
 
     function setWhitelist(address _user, bool _status) external onlyOwner {
