@@ -47,11 +47,7 @@ contract TimeLockedDepositBox is BaseDepositBox {
     }
 }
 
-contract BasicDepositBox is BaseDepositBox {
-    function getBoxType() public pure override returns (string memory) {
-        return "Basic";
-    }
-}
+// Duplicate BasicDepositBox definition removed.
 
 contract PremiumDepositBox is BaseDepositBox {
     mapping(address => string) private metadata;
