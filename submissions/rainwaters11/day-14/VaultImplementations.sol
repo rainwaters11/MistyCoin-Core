@@ -49,21 +49,7 @@ contract TimeLockedDepositBox is BaseDepositBox {
 
 // Duplicate BasicDepositBox definition removed.
 
-contract PremiumDepositBox is BaseDepositBox {
-    mapping(address => string) private metadata;
-
-    function setMetadata(address user, string calldata data) external onlyOwner {
-        metadata[user] = data;
-    }
-
-    function getMetadata(address user) external view onlyOwner returns (string memory) {
-        return metadata[user];
-    }
-
-    function getBoxType() public pure override returns (string memory) {
-        return "Premium";
-    }
-}
+// Duplicate PremiumDepositBox definition removed.
 
 contract TimeLockedDepositBox is BaseDepositBox {
     uint256 public unlockTime;
