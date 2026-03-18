@@ -75,4 +75,12 @@ contract SubscriptionLogicV1 is SubscriptionStorageLayout {
         Subscription storage sub = subscriptions[user];
         return sub.endTime > 0 && block.timestamp < sub.endTime && !sub.paused;
     }
-}
+
+    function withdrawRevenue() external onlyOwner {
+        uint256 amount = address(this).balance;
+        require(amount > 0, "LogicV1: no ETH to withdraw");
+
+        (bool sent, ) = payable(owner).call{value: amount}("");
+        require(sent, "LogicV1: ETH transfer failed");
+    }
+    }
