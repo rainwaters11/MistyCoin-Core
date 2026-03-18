@@ -59,6 +59,7 @@ contract PluginStore {
         string calldata functionSignature,
         address user
     ) external view returns (bytes memory result) {
+        require(plugin.code.length > 0, "Plugin has no code");
         bytes memory data = abi.encodeWithSignature(functionSignature, user);
         (bool success, bytes memory returnData) = plugin.staticcall(data);
 
