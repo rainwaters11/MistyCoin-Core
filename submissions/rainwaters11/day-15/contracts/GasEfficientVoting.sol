@@ -87,7 +87,7 @@ contract GasEfficientVoting {
 	}
 
 	function hasVoted(address voter, uint256 proposalId) external view returns (bool) {
-		if (proposalId >= MAX_PROPOSALS) revert InvalidProposal();
+  if (proposalId >= proposals.length) revert InvalidProposal();
 
 		uint256 mask = 1 << proposalId;
 		return voterRegistry[voter] & mask != 0;
