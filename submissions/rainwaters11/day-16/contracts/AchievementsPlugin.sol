@@ -7,6 +7,7 @@ contract AchievementsPlugin {
     event BadgeSet(address indexed user, string badge);
 
     function setBadge(address user, string calldata badge) external {
+        require(msg.sender == user, "Only user can set own badge");
         userBadge[user] = badge;
         emit BadgeSet(user, badge);
     }
